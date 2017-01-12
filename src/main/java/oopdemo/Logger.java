@@ -3,8 +3,13 @@ package oopdemo;
 import java.io.Serializable;
 
 public class Logger {
-    private Saver saver = SaverFactory.create(); //Is-A
-    private Filter filter = new LevelFilter(); //Creator
+    private Saver saver;
+    private Filter filter; //DI
+
+    public Logger(Saver saver, Filter filter) {
+        this.saver = saver;
+        this.filter = filter;
+    }
 
     public void log(String message, int level) { //1M
        if (filter.filter(level)) {
