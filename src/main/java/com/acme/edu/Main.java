@@ -12,7 +12,7 @@ import java.io.File;
  * @author eugene
  */
 public class Main {
-    public static void main(String[] args) {
+    public strictfp static void main(String[] args) { //IEEE xxx : +,-,*,/
         byte b = 0; //0..255 | -127..128
         short s = 0; //
         int i = 0;
@@ -24,6 +24,14 @@ public class Main {
         char ch = 1234;
         boolean bb = true | false;
         
-        System.out.println(new Object());
+        byte counter = 0;
+        for (int ii = 0; ii < 130; ii++) {
+            counter++;
+        }
+        
+        System.out.println(counter);
+        
+        System.out.println(.1f + .2f);
+        
     }
 }
