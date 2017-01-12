@@ -14,12 +14,32 @@ import java.util.List;
  */
 public class Main {
     public strictfp static void main(final String[] args) { //IEEE xxx : +,-,*,/
-        String string1 = new String("a");
-        String string2 = "a";
+        int[] array = new int[4];
+        System.out.println(array.length);
         
-        string1.toUpperCase();
-        string1.split(",");
+        int[] arr = {1,2, 3, 5, 6};
+        m( new int[] {} );
         
-        System.out.println(string1); 
+        int[][] matrix = new int[2][];
+        System.out.println(matrix[0]);
+        matrix[0] = new int[10];
+        matrix[1] = new int[20];
+        matrix[0] = new int[] {1,2};
+        
+        Object[] arra = new Object[9];
+        arra[0] = 5; //
+        Integer iii = 6; // = new Integeer(6);
+        int ii = iii; //iii.intValue()
+        
+        Integer i1 = 1_00, i2 = 1_00;
+        Integer i3 = i1 + i2;
+        System.out.println(i3);
+        
+        System.out.println(i1 == i2);
+        
+    }
+    
+    static void m(int[] arg) {
+        
     }
 }
