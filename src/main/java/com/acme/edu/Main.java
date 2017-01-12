@@ -10,17 +10,5 @@ package com.acme.edu;
  * @author eugene
  */
 public class Main {
-    public strictfp static void main(final String... args) {
-        m("", "");
-    }
 
-    static void m(String... args) { //vararg
-        for (String arg : args) {
-            System.out.println(arg);
-        }
-    }
-
-    static void m2(String s, String... aaa) {
-
-    }
 }
