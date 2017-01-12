@@ -6,40 +6,71 @@
 package com.acme.edu;
 
 import java.io.File;
+import java.util.List;
 
 /**
  *
  * @author eugene
  */
 public class Main {
-    public strictfp static void main(String[] args) { //IEEE xxx : +,-,*,/
-        //Ariph
+    public strictfp static void main(final String[] args) { //IEEE xxx : +,-,*,/
+        if (false) {
+            System.out.println("fff");
+        } else if(false) {
+            
+        }
+        
         int i = 0;
-        System.out.println(  i++ + ++i == 0 );
-        i *= 5; 
+        switch(i) {
+            case 1: {
+                System.out.println("1"); 
+            } break;
+            case 2: System.out.println("2"); break;
+            default: System.out.println("!!!!!"); break;
+        }
+        
+        for (int counter = 0; counter < 10; ++counter, System.out.println(counter)) {
+            System.out.println(">> " + counter);
+        }
+//        for(;;) {}
+        
+        for (String arg : args) { //-> for ()
+            System.out.println(arg);
+        }
+        
+        outeeee_$r: do {
+            inneeeeeeeeeer: while (true) {
+                if (true) continue outeeee_$r;
+            }
+        } while(false);   
+        
+        final int co = 7;
+        co = 6;
+        
+        final DTO dto = new DTO();
+        dto = null;
 
-        System.out.println(1 + 2 + "3" + 4);
-        
-        //Logic
-        System.out.println( true || f() );
-        System.out.println( new DTO() == new DTO() ); //same | equal
-        
-        //Bitwise
-        System.out.println(~2);
-        System.out.println( 3 >> 1 );
-        
-        //Ternary
-        System.out.println(    
-                f() ? "dfdf" : "ffff"
-        );
-    }
-
-    private static boolean f() {
-        return false;
     }
 }
 
-
-class DTO extends Object {
-    //.....
+final class DTO {
+    private final int id;
+    public static final int MY_SUPER_CONST;
+    
+    static {
+        MY_SUPER_CONST = 0;
+    }
+    
+    {
+        System.out.println("fff");
+    }
+    
+    DTO() {
+        super();
+        id = 0;
+    }
+    
+    final void m() {
+        
+    }
 }
