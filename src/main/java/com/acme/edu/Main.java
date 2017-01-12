@@ -14,63 +14,24 @@ import java.util.List;
  */
 public class Main {
     public strictfp static void main(final String[] args) { //IEEE xxx : +,-,*,/
-        if (false) {
-            System.out.println("fff");
-        } else if(false) {
-            
-        }
-        
-        int i = 0;
-        switch(i) {
-            case 1: {
-                System.out.println("1"); 
-            } break;
-            case 2: System.out.println("2"); break;
-            default: System.out.println("!!!!!"); break;
-        }
-        
-        for (int counter = 0; counter < 10; ++counter, System.out.println(counter)) {
-            System.out.println(">> " + counter);
-        }
-//        for(;;) {}
-        
-        for (String arg : args) { //-> for ()
-            System.out.println(arg);
-        }
-        
-        outeeee_$r: do {
-            inneeeeeeeeeer: while (true) {
-                if (true) continue outeeee_$r;
-            }
-        } while(false);   
-        
-        final int co = 7;
-        co = 6;
-        
-        final DTO dto = new DTO();
-        dto = null;
-
+        DTO dto = new DTO();
+        m(dto);
+        System.out.println(dto.getId());
+    }
+    
+    static void m(DTO arg) {
+        arg.setId(1);
     }
 }
 
-final class DTO {
-    private final int id;
-    public static final int MY_SUPER_CONST;
+class DTO {
+    private int id = 0;
     
-    static {
-        MY_SUPER_CONST = 0;
+    public void setId(int id) {
+        this.id = id;
     }
     
-    {
-        System.out.println("fff");
-    }
-    
-    DTO() {
-        super();
-        id = 0;
-    }
-    
-    final void m() {
-        
+    public int getId() {
+        return id;
     }
 }
