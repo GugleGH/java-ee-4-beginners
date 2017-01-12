@@ -1,12 +1,16 @@
 package oopdemo;
 
+import java.io.Serializable;
+
 public class Logger {
-    private Saver saver = new FileSaver("////"); //Is-A
-    private Filter filter = new LevelFilter();
+    private Saver saver = SaverFactory.create(); //Is-A
+    private Filter filter = new LevelFilter(); //Creator
 
     public void log(String message, int level) { //1M
        if (filter.filter(level)) {
-           saver.save(message);
+           if (saver instanceof Serializable) {
+               saver.save(message);
+           }
        }
    }
 }
@@ -32,11 +36,12 @@ class FileSaver extends Saver {
     }
 }
 
-abstract class Filter {
-    public abstract boolean filter(int level);
+interface Filter {
+    boolean filter(int level);
 }
 
-class LevelFilter extends Filter {
+@MySuperPuperFlag(p = "fff")
+class LevelFilter implements Filter, Serializable {
     @Override
     public boolean filter(int level) {
         return false;
