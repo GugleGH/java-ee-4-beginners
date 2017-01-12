@@ -13,25 +13,33 @@ import java.io.File;
  */
 public class Main {
     public strictfp static void main(String[] args) { //IEEE xxx : +,-,*,/
-        byte b = 0; //0..255 | -127..128
-        short s = 0; //
+        //Ariph
         int i = 0;
-        long l = 9999999999L;
+        System.out.println(  i++ + ++i == 0 );
+        i *= 5; 
+
+        System.out.println(1 + 2 + "3" + 4);
         
-        float f = 0.f;
-        double façade = 0.;
+        //Logic
+        System.out.println( true || f() );
+        System.out.println( new DTO() == new DTO() ); //same | equal
         
-        char ch = 1234;
-        boolean bb = true | false;
+        //Bitwise
+        System.out.println(~2);
+        System.out.println( 3 >> 1 );
         
-        byte counter = 0;
-        for (int ii = 0; ii < 130; ii++) {
-            counter++;
-        }
-        
-        System.out.println(counter);
-        
-        System.out.println(.1f + .2f);
-        
+        //Ternary
+        System.out.println(    
+                f() ? "dfdf" : "ffff"
+        );
     }
+
+    private static boolean f() {
+        return false;
+    }
+}
+
+
+class DTO extends Object {
+    //.....
 }
