@@ -1,8 +1,11 @@
 package oopdemo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
 
-public class Logger {
+public class Logger<T extends String & Serializable, Integer> {
     private Saver saver;
     private Filter filter; //DI
 
@@ -11,7 +14,7 @@ public class Logger {
         this.filter = filter;
     }
 
-    public void log(Object message, int level) { //1M
+    public void log(T message, int level) { //1M
        if (filter.filter(level)) {
            if (saver instanceof Serializable) {
                saver.save(message);
@@ -19,14 +22,16 @@ public class Logger {
        }
    }
 
-   public Object[] getLast10SavedObjects() {
+   public T[] getLast10SavedObjects() {
         return null;
    }
+
+   public <U> U m(U arg) { return null; }
 }
 
 class Main {
     public static void main(String[] args) {
-        Logger logger = new Logger(
+        Logger<String> logger = new Logger<>(
             new FileSaver(""),
             new LevelFilter()
         );
@@ -35,12 +40,9 @@ class Main {
         logger.log("", 1);
         logger.log("", 1);
 
-        Object[] savedObjects = logger.getLast10SavedObjects();
-        for (Object element : savedObjects) {
-            if (element instanceof String) {
-                String realElement = (String) element;
-                System.out.println(realElement.toUpperCase());
-            }
+        String[] savedObjects = logger.getLast10SavedObjects();
+        for (String element : savedObjects) {
+            System.out.println(element.toUpperCase());
         }
     }
 }
