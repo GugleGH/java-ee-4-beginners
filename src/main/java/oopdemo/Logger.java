@@ -11,17 +11,42 @@ public class Logger {
         this.filter = filter;
     }
 
-    public void log(String message, int level) { //1M
+    public void log(Object message, int level) { //1M
        if (filter.filter(level)) {
            if (saver instanceof Serializable) {
                saver.save(message);
            }
        }
    }
+
+   public Object[] getLast10SavedObjects() {
+        return null;
+   }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Logger logger = new Logger(
+            new FileSaver(""),
+            new LevelFilter()
+        );
+
+        logger.log("", 1);
+        logger.log("", 1);
+        logger.log("", 1);
+
+        Object[] savedObjects = logger.getLast10SavedObjects();
+        for (Object element : savedObjects) {
+            if (element instanceof String) {
+                String realElement = (String) element;
+                System.out.println(realElement.toUpperCase());
+            }
+        }
+    }
 }
 
 class Saver {
-    public void save(String message) {
+    public void save(Object message) {
         //.....
     }
 }
