@@ -1,17 +1,30 @@
 package oopdemo;
 
 public class Logger {
-   public void log(String message, int level) {
-       if (filter(level)) {
-           save(message);
+    private FileSaver saver = new FileSaver("////");
+    private LevelFilter filter = new LevelFilter();
+
+    public void log(String message, int level) {
+       if (filter.filter(level)) {
+           saver.save(message);
        }
    }
+}
 
-    private void save(String message) {
+class FileSaver {
+    private String path;
 
+    FileSaver(String path) {
+        this.path = path;
     }
 
-    private boolean filter(int level) {
+    public void save(String message) {
+
+    }
+}
+
+class LevelFilter {
+    public boolean filter(int level) {
         return false;
     }
 }
