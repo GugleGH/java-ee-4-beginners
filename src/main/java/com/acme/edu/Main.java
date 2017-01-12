@@ -14,24 +14,12 @@ import java.util.List;
  */
 public class Main {
     public strictfp static void main(final String[] args) { //IEEE xxx : +,-,*,/
-        DTO dto = new DTO();
-        m(dto);
-        System.out.println(dto.getId());
-    }
-    
-    static void m(DTO arg) {
-        arg.setId(1);
-    }
-}
-
-class DTO {
-    private int id = 0;
-    
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    public int getId() {
-        return id;
+        String string1 = new String("a");
+        String string2 = "a";
+        
+        string1.toUpperCase();
+        string1.split(",");
+        
+        System.out.println(string1); 
     }
 }
