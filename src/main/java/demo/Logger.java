@@ -51,6 +51,7 @@ class FileSaver extends Saver {  //IS-A
 }
 
 interface Filter {
+    int i = 0;
     boolean filter(int level);
 }
 
