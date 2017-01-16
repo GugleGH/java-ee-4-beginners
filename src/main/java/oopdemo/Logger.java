@@ -31,7 +31,7 @@ public class Logger<T extends String & Serializable, Integer> {
 
 class Main {
     public static void main(String[] args) {
-        Logger<String> logger = new Logger<>(
+        Logger logger = new Logger(
             new FileSaver(""),
             new LevelFilter()
         );
@@ -60,7 +60,7 @@ class FileSaver extends Saver {
         this.path = path;
     }
 
-    @Override
+//    @Override
     public void save(String message) {
         //......IO
         super.save(message);
@@ -72,7 +72,7 @@ interface Filter {
     boolean filter(int level);
 }
 
-@MySuperPuperFlag(p = "fff")
+//@MySuperPuperFlag(p = "fff")
 class LevelFilter implements Filter, Serializable {
     @Override
     public boolean filter(int level) {
