@@ -6,34 +6,50 @@
 package com.acme.edu;
 
 
-import com.sun.jmx.snmp.SnmpUnknownSubSystemException;
-
 import java.io.*;
-import java.nio.file.Path;
+import java.sql.SQLException;
 
 /**
  *
  * @author eugene
  */
 public class Main {
-    public static void main(String[] args) throws IOException {
-        final File targetFile = new File(new File("target"), "test.txt");
+    public static void main(String[] args) {
+        try {
+            readFile();
+            //.....
+            //......
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        final PrintWriter printWriter = new PrintWriter(
-            new BufferedWriter(
-                new OutputStreamWriter(
-                    new FileOutputStream(targetFile, true),
-                    "windows-1251"
-                )
-            )
-        );
+    static void readFile() throws MyBLException {
+        /*
+        if (true) try {
+            throw new IOException("kdjfhkdfjghdkf!!!!!!");
+        } catch (IOException e) {
+            ///......
+            if(1==1) throw new RuntimeException("rrr");
+            e.printStackTrace();
+            throw new MyBLException("fdkgjhdfgkjdhfgkjdhg", e);
+        } finally {
+            throw new RuntimeException("d");
+        }
+        */
 
-        printWriter.println("привет 01 !");
-        printWriter.println("привет 02 !");
-        printWriter.close();
+        try (My my = new My()) {
+            throw new IOException("1");
+        } catch (IOException e) {
+            throw new RuntimeException("2");
+        }
+        //....
+    }
+}
 
-        final BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(">>>>" + in.readLine());
-        in.close();
+class My implements Closeable {
+    @Override
+    public void close() throws IOException {
+        throw new IOException("qqqqq");
     }
 }
