@@ -1,10 +1,11 @@
 package demo;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.FileSystem;
 import java.nio.file.Path;
+import java.util.Locale;
 
 public class Demo {
     private transient int id; //don't serialize
@@ -14,6 +15,17 @@ public class Demo {
         File file2 = new File("target", "text.txt");
         file.exists();
 
-        
+        final BufferedReader bufferedReader = new BufferedReader(
+            new InputStreamReader(
+                new BufferedInputStream(
+                    new FileInputStream(file2)), "UTF-8")); //chaining
+
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            System.out.println(">> " + line);
+        }
+
+        bufferedReader.close();
+
     }
 }
