@@ -1,31 +1,48 @@
 package demo;
 
-
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.util.Locale;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
 
 public class Demo {
-    private transient int id; //don't serialize
+    public static void main(String... args) {
+        try {
+//            fopen();
+            ///....
+        } catch (NullPointerException | ArithmeticException e) {
+            e.printStackTrace();
+        } catch (RuntimeException e) {
+//            Arrays.asList(e.getStackTrace()).forEach(System.out::println);
+            throw new RuntimeException("2", e); //re-throw
+        } finally {
+//            throw new RuntimeException("3"); //Suppress
+            /*
+            if(f != null) try {
+                f.close();
+            } catch (Exception e) {
 
-    public static void main(String[] args) throws IOException {
-        File file = new File("target" + File.separator + "text.txt");
-        File file2 = new File("target", "text.txt");
-        file.exists();
-
-        final BufferedReader bufferedReader = new BufferedReader(
-            new InputStreamReader(
-                new BufferedInputStream(
-                    new FileInputStream(file2)), "UTF-8")); //chaining
-
-        String line = "";
-        while ((line = bufferedReader.readLine()) != null) {
-            System.out.println(">> " + line);
+            }
+            */
         }
 
-        bufferedReader.close();
+        try (
+            Res r = new Res();
+            InputStream is = new FileInputStream("")
+        ) {
+            //....
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static void fopen() throws MyBEx {
+        //.....
+        if (true) try {
+            throw new Exception("1");
+        } catch (Exception e) {
+            throw new MyBEx("1111", e);
+        }
+        //...
     }
 }
