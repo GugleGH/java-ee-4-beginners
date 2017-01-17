@@ -75,7 +75,7 @@ class Main {
         Logger<String> logger = new Logger<String>(new FileSaver(""), new LevelFilter());
         logger.log("Ssssss", 9);
         logger.log("Ssssss", 9);
-        logger.log(new Object(), 9);
+//        logger.log(new Object(), 9);
         logger.log("Ssssss", 9);
         logger.log("Ssssss", 9);
 
