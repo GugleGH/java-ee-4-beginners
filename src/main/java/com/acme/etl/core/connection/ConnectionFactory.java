@@ -15,7 +15,10 @@ public class ConnectionFactory {
     // Variables declaration
     private static final long serialVersionUID = 1L;
     
+    /** Соединение с БД. */
     private static ConnectionDAO connectionDAO = null;
+    /** Пользователи. */
+    private static UserDAO userDAO = null;
     // End of variables declaration
 
     private ConnectionFactory() {
@@ -41,9 +44,15 @@ public class ConnectionFactory {
      * @return Connection
      */
     public ConnectionDAO getConnection() {
-        if (connectionDAO == null)
-            connectionDAO = new ConnectionDAOImpl();
-
-        return connectionDAO;
+        return connectionDAO = (connectionDAO == null) ? new ConnectionDAOImpl() : connectionDAO;
+    }
+    
+    /**
+     * Возвращает методы работы с Пользователями.
+     * @return пользователь
+     */
+    public UserDAO getUser() {
+        return userDAO = (userDAO==null) ? new UserDAOImpl() : userDAO;
+        
     }
 }
