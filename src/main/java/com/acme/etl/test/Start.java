@@ -1,6 +1,6 @@
 package com.acme.etl.test;
 
-import com.acme.etl.core.callback.UserFromFile;
+import com.acme.etl.DAO.impl.LoaderUserFromFileCallbackImpl;
 
 /**
  * Тестирование.
@@ -17,7 +17,7 @@ public class Start {
         args = new String[1];
         args[0] = str;
         
-        UserFromFile loadUsers = new UserFromFile(str);
+        LoaderUserFromFileCallbackImpl loadUsers = new LoaderUserFromFileCallbackImpl(str);
 
     }
 }

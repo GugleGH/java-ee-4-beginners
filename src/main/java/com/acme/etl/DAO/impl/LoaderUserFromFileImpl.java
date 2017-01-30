@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.acme.etl.loader.impl;
+package com.acme.etl.DAO.impl;
 
 import com.acme.etl.core.User;
-import com.acme.etl.loader.LoaderUserFromFile;
-import com.acme.etl.loader.LoaderUserFromFileCallback;
+import com.acme.etl.DAO.LoaderUserFromFile;
+import com.acme.etl.DAO.LoaderUserFromFileCallback;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -20,7 +20,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 /**
- * Парсер файла логирования.
+ * Чтение файла *.csv.
  * @author <a href="mailto:av.nosov@jet.su">Nosov A.V.</a>
  */
 public class LoaderUserFromFileImpl implements Runnable, LoaderUserFromFile {

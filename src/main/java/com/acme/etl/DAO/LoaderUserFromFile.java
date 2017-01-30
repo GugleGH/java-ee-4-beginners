@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.acme.etl.loader;
+package com.acme.etl.DAO;
 
 /**
  * Работа с файлом.

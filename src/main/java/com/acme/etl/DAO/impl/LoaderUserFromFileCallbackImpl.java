@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.acme.etl.core.callback;
+package com.acme.etl.DAO.impl;
 
 import com.acme.etl.core.User;
-import com.acme.etl.loader.LoaderUserFromFileCallback;
-import com.acme.etl.loader.impl.LoaderUserFromFileImpl;
+import com.acme.etl.DAO.LoaderUserFromFileCallback;
+import com.acme.etl.DAO.impl.LoaderUserFromFileImpl;
 import com.acme.etl.policy.EDTInvocationHandler;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -17,16 +17,16 @@ import org.apache.log4j.Logger;
  * Реализация загрузки пользователей.
  * @author <a href="mailto:av.nosov@jet.su">Nosov A.V.</a>
  */
-public class UserFromFile implements LoaderUserFromFileCallback {
+public class LoaderUserFromFileCallbackImpl implements LoaderUserFromFileCallback {
 
     // Variables declaration
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(UserFromFile.class);
+    private static final Logger log = Logger.getLogger(LoaderUserFromFileCallbackImpl.class);
     
     private final LoaderUserFromFileImpl loadUsers;
     // End of variables declaration
     
-    public UserFromFile(String path) {
+    public LoaderUserFromFileCallbackImpl(String path) {
         LoaderUserFromFileCallback ui = (LoaderUserFromFileCallback) java.lang.reflect.Proxy.newProxyInstance(getClass().getClassLoader(),
                 new Class[]{LoaderUserFromFileCallback.class}, new EDTInvocationHandler(this));
         loadUsers = new LoaderUserFromFileImpl(ui, path, 2);

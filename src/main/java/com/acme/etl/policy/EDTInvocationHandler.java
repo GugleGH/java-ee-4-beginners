@@ -5,7 +5,7 @@
 
 package com.acme.etl.policy;
 
-import com.acme.etl.loader.LoaderUserFromFileCallback;
+import com.acme.etl.DAO.LoaderUserFromFileCallback;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
