@@ -40,7 +40,7 @@ public class LoaderUserFromFileCallbackImpl implements LoaderUserFromFileCallbac
 
     @Override
     public void setUser(User user) {
-        log.info("Read user info. id: '" + user.getId() + "'; name: '" + user.getName() + "';");
+//        log.info("Read user info. id: '" + user.getId() + "'; name: '" + user.getName() + "';");
     }
 
     @Override
