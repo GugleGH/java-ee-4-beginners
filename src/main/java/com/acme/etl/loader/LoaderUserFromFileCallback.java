@@ -39,13 +39,6 @@ public interface LoaderUserFromFileCallback {
     void setUsersBatch(List<User> users);
     
     /**
-     * Устнавливает всех прочитанных пользователей.
-     * @param users список пользоватлей
-     */
-    @RequiresEDT(RequiresEDTPolicy.SYNC)
-    void setUsers(List users);
-    
-    /**
      * Размер файла в файтах.
      * @param size размер
      */
