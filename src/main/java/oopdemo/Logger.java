@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class Logger<T extends String & Serializable, Integer> {
+
     private Saver saver;
     private Filter filter; //DI
 
@@ -15,25 +16,28 @@ public class Logger<T extends String & Serializable, Integer> {
     }
 
     public void log(T message, int level) { //1M
-       if (filter.filter(level)) {
-           if (saver instanceof Serializable) {
-               saver.save(message);
-           }
-       }
-   }
+        if (filter.filter(level)) {
+            if (saver instanceof Serializable) {
+                saver.save(message);
+            }
+        }
+    }
 
-   public T[] getLast10SavedObjects() {
+    public T[] getLast10SavedObjects() {
         return null;
-   }
+    }
 
-   public <U> U m(U arg) { return null; }
+    public <U> U m(U arg) {
+        return null;
+    }
 }
 
 class Main {
+
     public static void main(String[] args) {
         Logger logger = new Logger(
-            new FileSaver(""),
-            new LevelFilter()
+                new FileSaver(""),
+                new LevelFilter()
         );
 
         logger.log("", 1);
@@ -48,12 +52,14 @@ class Main {
 }
 
 class Saver {
+
     public void save(Object message) {
         //.....
     }
 }
 
 class FileSaver extends Saver {
+
     private String path;
 
     FileSaver(String path) {
@@ -69,11 +75,13 @@ class FileSaver extends Saver {
 }
 
 interface Filter {
+
     boolean filter(int level);
 }
 
 //@MySuperPuperFlag(p = "fff")
 class LevelFilter implements Filter, Serializable {
+
     @Override
     public boolean filter(int level) {
         return false;
