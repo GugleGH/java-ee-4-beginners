@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.acme.etl.DAO.impl;
+package com.acme.etl.DAO.callback.impl;
 
 import com.acme.etl.core.User;
 import com.acme.etl.DAO.LoaderUserFromFileCallback;
-import com.acme.etl.DAO.impl.LoaderUserFromFileImpl;
+import com.acme.etl.DAO.impl.LoaderUserJaxBImpl;
 import com.acme.etl.policy.EDTInvocationHandler;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -17,19 +17,19 @@ import org.apache.log4j.Logger;
  * Реализация загрузки пользователей.
  * @author <a href="mailto:av.nosov@jet.su">Nosov A.V.</a>
  */
-public class LoaderUserFromFileCallbackImpl implements LoaderUserFromFileCallback {
+public class LoaderUserJaxBCallbackImpl implements LoaderUserFromFileCallback {
 
     // Variables declaration
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(LoaderUserFromFileCallbackImpl.class);
+    private static final Logger log = Logger.getLogger(LoaderUserJaxBCallbackImpl.class);
     
-    private final LoaderUserFromFileImpl loadUsers;
+    private final LoaderUserJaxBImpl loadUsers;
     // End of variables declaration
     
-    public LoaderUserFromFileCallbackImpl(String path) {
+    public LoaderUserJaxBCallbackImpl(String path) {
         LoaderUserFromFileCallback ui = (LoaderUserFromFileCallback) java.lang.reflect.Proxy.newProxyInstance(getClass().getClassLoader(),
                 new Class[]{LoaderUserFromFileCallback.class}, new EDTInvocationHandler(this));
-        loadUsers = new LoaderUserFromFileImpl(ui, path, 2);
+        loadUsers = new LoaderUserJaxBImpl(ui, path, 2);
         loadUsers.execute();
     }
 
@@ -47,7 +47,8 @@ public class LoaderUserFromFileCallbackImpl implements LoaderUserFromFileCallbac
     public void setUsersBatch(List<User> users) {
         log.info("Read user info by batch: '" + users.size() + "';'");
         users.forEach((user) -> {
-            log.info("id: '" + user.getId() + "'; name: '" + user.getName() + "';");
+//            log.info("id: '" + user.getId() + "'; name: '" + user.getName() + "';");
+            log.info(user.toString());
         });
     }
 
@@ -68,12 +69,12 @@ public class LoaderUserFromFileCallbackImpl implements LoaderUserFromFileCallbac
 
     @Override
     public void startLoading() {
-        log.info("Start load user from file.");
+        log.info("Start load user from *.xml file.");
     }
 
     @Override
     public void stopLoading() {
-        log.info("Stop load user from file.");
+        log.info("Stop load user from *.xml file.");
     }
 
     @Override

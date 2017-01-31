@@ -23,11 +23,11 @@ import org.apache.log4j.Logger;
  * Чтение файла *.csv.
  * @author <a href="mailto:av.nosov@jet.su">Nosov A.V.</a>
  */
-public class LoaderUserFromFileImpl implements Runnable, LoaderUserFromFile {
+public class LoaderUserCSVImpl implements Runnable, LoaderUserFromFile {
 
     // Variables declaration
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(LoaderUserFromFileImpl.class);
+    private static final Logger log = Logger.getLogger(LoaderUserCSVImpl.class);
     
     /** Состояние потока. */
     private boolean executed = false;
@@ -50,7 +50,7 @@ public class LoaderUserFromFileImpl implements Runnable, LoaderUserFromFile {
      * @param ui слушатель
      * @param path_in путь к файлу
      */
-    public LoaderUserFromFileImpl(LoaderUserFromFileCallback ui, String path_in) {
+    public LoaderUserCSVImpl(LoaderUserFromFileCallback ui, String path_in) {
         this(ui, path_in, 5);
     }
     
@@ -60,7 +60,7 @@ public class LoaderUserFromFileImpl implements Runnable, LoaderUserFromFile {
      * @param path_in путь к файлу
      * @param batch размер партии
      */
-    public LoaderUserFromFileImpl(LoaderUserFromFileCallback ui, String path_in, int batch) {
+    public LoaderUserCSVImpl(LoaderUserFromFileCallback ui, String path_in, int batch) {
         this.ui = ui;
         this.path_in = path_in;
         this.batch = batch;
@@ -70,8 +70,9 @@ public class LoaderUserFromFileImpl implements Runnable, LoaderUserFromFile {
     @Override
     public void run() {
         ui.startLoading();
+        ui.setMessage("Loader Users from CSV.");
         if (path_in == null || path_in.isEmpty()) {
-            ui.setMessage("Пустой путь к файлу.");
+            ui.showError("Пустой путь к файлу.");
             return;
         }
         
