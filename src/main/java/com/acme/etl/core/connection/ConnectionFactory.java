@@ -16,7 +16,7 @@ public class ConnectionFactory {
     private static final long serialVersionUID = 1L;
     
     /** Соединение с БД. */
-    private static ConnectionDAO connectionDAO = null;
+    private static ConnectionWrapper connectionWrap = null;
     /** Пользователи. */
     private static UserDAO userDAO = null;
     // End of variables declaration
@@ -38,13 +38,13 @@ public class ConnectionFactory {
     public static ConnectionFactory getInstance() {
         return ConnectionHRFactoryHolder.FACTORY;
     }
-
+    
     /**
      * Возвращает методы работы с соединением.
      * @return Connection
      */
-    public ConnectionDAO getConnection() {
-        return connectionDAO = (connectionDAO == null) ? new ConnectionDAOImpl() : connectionDAO;
+    public ConnectionWrapper getConnection() {
+        return connectionWrap = (connectionWrap == null) ? new ConnectionWrapper() : connectionWrap;
     }
     
     /**

@@ -19,18 +19,18 @@ import org.apache.log4j.Logger;
  * Абстракный класс возвращающий соединения работы с БД.
  * @author <a href="mailto:av.nosov@jet.su">Nosov A.V.</a>
  */
-public class ConnectionWrap {
+public class ConnectionWrapper {
 
     // Variables declaration
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(ConnectionWrap.class);
+    private static final Logger log = Logger.getLogger(ConnectionWrapper.class);
     
     private Connection conn;
     private Statement stmt;
     private PreparedStatement pstmt;
     // End of variables declaration
 
-    public ConnectionWrap() {
+    public ConnectionWrapper() {
         try {
             conn = getConnection();
 //            pstmt = conn.prepareStatement(""); // А так можно инициализороваться?
@@ -49,12 +49,7 @@ public class ConnectionWrap {
         connectionProps.put("user", "APP");
         connectionProps.put("password", "APP");
         
-        // postgresql
-        connectionProps.put("derby.drda.minThreads", "1"); // Сколько надо сделать запросов что бы начать кеширование
-//        connectionProps.put("preparedStatementCacheQueries", "100"); // Максимальной значение запросов в кеше (256 )
-//        connectionProps.put("preparedStatementCacheSizeMiB", "100"); // Максимальное кол-во памяти что бы избежать OutOfMemoryError (5)
-        
-        // postgresql
+        // derby
 //        connectionProps.put("derby.drda.minThreads", "1"); // Сколько надо сделать запросов что бы начать кеширование
 //        connectionProps.put("preparedStatementCacheQueries", "100"); // Максимальной значение запросов в кеше (256 )
 //        connectionProps.put("preparedStatementCacheSizeMiB", "100"); // Максимальное кол-во памяти что бы избежать OutOfMemoryError (5)
@@ -72,7 +67,7 @@ public class ConnectionWrap {
     }
     
     public PreparedStatement getPreparedStatement(String query) throws SQLException {
-        return pstmt = (pstmt==null) ? conn.prepareStatement(query) : pstmt;
+        return pstmt = ( (pstmt == null) || pstmt.isClosed() ) ? conn.prepareStatement(query) : pstmt;
     }
     
     public void close() {
@@ -114,9 +109,4 @@ public class ConnectionWrap {
             }
         }
     }
-
-//    public void closeConnection(Statement statement, ResultSet resultSet) {
-//        closeQuietly(resultSet);
-//        closeQuietly(statement);
-//    }
 }
