@@ -83,8 +83,6 @@ public class LoaderUserCSVImpl implements Runnable, LoaderUserFromFile {
             long full = 0;
             ui.setMessage(path.getFileName().toString());
             
-            int i = 0;
-            
             while (sc.hasNextLine()) {
                 if (isCanceled())
                     break;
@@ -97,7 +95,6 @@ public class LoaderUserCSVImpl implements Runnable, LoaderUserFromFile {
                 
                 users.add(user);
                 if (users.size() == batch) {
-                    i = 0;
                     sendBatch();
                 }
                 

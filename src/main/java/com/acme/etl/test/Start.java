@@ -2,6 +2,7 @@ package com.acme.etl.test;
 
 import com.acme.etl.DAO.callback.impl.LoaderUserCSVCallbackImpl;
 import com.acme.etl.DAO.callback.impl.LoaderUserJaxBCallbackImpl;
+import com.acme.etl.DAO.callback.impl.LoaderUserJaxB_v2_CallbackImpl;
 import org.apache.log4j.Logger;
 
 /**
@@ -29,5 +30,7 @@ public class Start {
         LoaderUserCSVCallbackImpl loadCSV = new LoaderUserCSVCallbackImpl(csv);
         
         LoaderUserJaxBCallbackImpl loadJaxB = new LoaderUserJaxBCallbackImpl(xml);
+        
+//        LoaderUserJaxB_v2_CallbackImpl loadJaxB_v2 = new LoaderUserJaxB_v2_CallbackImpl(xml);
     }
 }
