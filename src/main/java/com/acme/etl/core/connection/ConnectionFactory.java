@@ -53,6 +53,5 @@ public class ConnectionFactory {
      */
     public UserDAO getUser() {
         return userDAO = (userDAO==null) ? new UserDAOImpl() : userDAO;
-        
     }
 }
